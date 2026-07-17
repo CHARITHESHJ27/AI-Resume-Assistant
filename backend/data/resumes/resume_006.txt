@@ -1,0 +1,42 @@
+RESUME_006 - AI Research Engineer
+
+SUMMARY
+AI Research Engineer with 3 years of experience bridging research and production. Published researcher with expertise in generative models, reinforcement learning, and model efficiency.
+
+SKILLS
+Languages: Python, C++, Julia, LaTeX
+Research Tools: PyTorch, JAX, Flax, Weights & Biases, Hydra, Ray
+Areas: Generative AI (Diffusion Models, GANs, VAEs), RL (PPO, SAC, DQN), Model Compression
+Techniques: Knowledge Distillation, Pruning, Quantization, Neural Architecture Search
+Infrastructure: SLURM, multi-GPU training (DDP, FSDP), TPU training
+Other: Git, Docker, Linux, Jupyter, Colab
+
+EXPERIENCE
+
+Research Engineer | AI Research Lab | 2022 - Present
+- Developed novel diffusion model architecture for high-resolution image synthesis, achieving state-of-the-art FID score on ImageNet 256x256
+- Implemented RLHF pipeline for aligning language models with human preferences, contributing to production model improvements
+- Reduced ViT-Large inference cost by 3x using structured pruning and knowledge distillation with <1% accuracy drop
+- Reproduced and extended 5+ SOTA papers, contributing implementations to open-source community
+
+Research Intern | University AI Lab | 2021 - 2022
+- Researched multi-task reinforcement learning for robotic manipulation
+- Co-authored paper accepted at NeurIPS 2022 workshop
+
+EDUCATION
+M.S. Computer Science (AI/ML) | Top Research University | 2022
+B.S. Computer Science + Mathematics | University | 2020
+
+PUBLICATIONS
+- "Efficient Diffusion Models via Adaptive Noise Scheduling" - ICLR 2024 (under review)
+- "Multi-Task RL for Robotic Manipulation" - NeurIPS 2022 Workshop
+- "Survey of Model Compression Techniques" - arXiv 2023
+
+CERTIFICATIONS
+- Fast.ai Practical Deep Learning for Coders
+- Reinforcement Learning Specialization (Coursera)
+
+PROJECTS
+- Open-source diffusion model training framework (2K+ GitHub stars)
+- Contributed to Hugging Face Diffusers library
+- Kaggle: Top 3% in image generation competition

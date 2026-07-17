@@ -1,0 +1,39 @@
+RESUME_001 - Machine Learning Engineer
+
+SUMMARY
+Experienced Machine Learning Engineer with 5 years building production ML systems. Specializes in NLP, computer vision, and MLOps pipelines.
+
+SKILLS
+Languages: Python, Scala, SQL, Bash
+ML Frameworks: PyTorch, TensorFlow, Scikit-learn, HuggingFace Transformers, XGBoost
+MLOps: MLflow, Kubeflow, Airflow, Docker, Kubernetes
+Cloud: AWS SageMaker, GCP Vertex AI, Azure ML
+Databases: PostgreSQL, Redis, MongoDB, Pinecone
+Other: LangChain, FastAPI, Spark, Kafka
+
+EXPERIENCE
+
+Senior ML Engineer | FinTech Startup | 2022 - Present
+- Designed and deployed a real-time fraud detection system using gradient boosting (XGBoost) achieving 99.2% precision at 0.1% FPR, processing 50K transactions/second
+- Built an NLP pipeline for automated document classification using BERT fine-tuning, reducing manual review time by 78%
+- Led migration of ML training infrastructure to Kubernetes, cutting compute costs by 40%
+- Mentored 3 junior engineers on MLOps best practices and model deployment
+
+ML Engineer | E-commerce Platform | 2020 - 2022
+- Developed a recommendation engine using collaborative filtering and neural embeddings, increasing click-through rate by 23%
+- Implemented A/B testing framework for model evaluation serving 10M+ daily users
+- Built automated retraining pipelines with data drift detection using Evidently AI
+- Optimized model inference latency from 200ms to 35ms using ONNX and TensorRT
+
+EDUCATION
+M.S. Computer Science (Machine Learning) | State University | 2020
+B.S. Computer Science | State University | 2018
+
+CERTIFICATIONS
+- AWS Certified Machine Learning Specialty
+- Google Professional Machine Learning Engineer
+- Deep Learning Specialization (Coursera - deeplearning.ai)
+
+PROJECTS
+- Open-source LLM evaluation framework (500+ GitHub stars)
+- Kaggle Competitions: Top 5% in NLP and tabular data competitions

@@ -1,0 +1,46 @@
+RESUME_004 - MLOps / ML Platform Engineer
+
+SUMMARY
+MLOps Engineer with 5 years of experience building scalable ML infrastructure and platforms. Expert in CI/CD for ML, model monitoring, and cloud-native ML systems.
+
+SKILLS
+Languages: Python, Go, Bash, Terraform, YAML
+MLOps Tools: MLflow, Kubeflow, Metaflow, ZenML, DVC, Feast
+CI/CD: GitHub Actions, Jenkins, ArgoCD, Tekton
+Infrastructure: Kubernetes, Helm, Terraform, Pulumi
+Cloud: AWS (SageMaker, EKS, S3, ECR), GCP (Vertex AI, GKE), Azure
+Monitoring: Prometheus, Grafana, Evidently AI, WhyLabs, Datadog
+Containers: Docker, containerd, Podman
+Databases: PostgreSQL, Redis, S3, Delta Lake
+
+EXPERIENCE
+
+Senior MLOps Engineer | Large Tech Company | 2022 - Present
+- Built internal ML platform serving 200+ data scientists, reducing model deployment time from 2 weeks to 4 hours
+- Designed feature store using Feast + Redis, enabling real-time feature serving at 10M requests/day
+- Implemented automated model monitoring with drift detection, reducing model degradation incidents by 85%
+- Led Kubernetes migration for ML workloads, achieving 99.9% uptime and 50% cost reduction
+
+MLOps Engineer | Startup | 2020 - 2022
+- Set up end-to-end MLOps pipeline using Kubeflow Pipelines and MLflow for experiment tracking
+- Built automated retraining system triggered by data drift, maintaining model performance SLAs
+- Implemented shadow deployment and canary releases for safe model rollouts
+- Created self-service model deployment portal reducing engineering bottlenecks
+
+Data Engineer | Consulting Firm | 2019 - 2020
+- Built data pipelines using Apache Spark and Airflow processing 5TB daily
+- Designed data lake architecture on AWS S3 with Delta Lake for ACID transactions
+
+EDUCATION
+B.S. Computer Science | State University | 2019
+
+CERTIFICATIONS
+- Certified Kubernetes Administrator (CKA)
+- AWS Certified DevOps Engineer Professional
+- HashiCorp Terraform Associate
+- Google Professional Cloud DevOps Engineer
+
+PROJECTS
+- Open-source MLOps template repository (3K+ GitHub stars)
+- Speaker at KubeCon 2023: "Scaling ML Workloads on Kubernetes"
+- Contributor to Kubeflow and MLflow open-source projects

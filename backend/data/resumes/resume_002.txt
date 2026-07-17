@@ -1,0 +1,38 @@
+RESUME_002 - Computer Vision Engineer
+
+SUMMARY
+Computer Vision Engineer with 4 years of experience building real-time vision systems for autonomous vehicles and robotics. Deep expertise in object detection, segmentation, and 3D perception.
+
+SKILLS
+Languages: Python, C++, CUDA
+CV Frameworks: OpenCV, PyTorch, TensorFlow, MMDetection, Detectron2
+Models: YOLO (v5/v8), Faster R-CNN, Mask R-CNN, ViT, DETR, SAM, DepthAnything
+Tools: ROS2, ONNX, TensorRT, OpenVINO, NVIDIA Triton
+Cloud: AWS, GCP, NVIDIA Jetson (edge deployment)
+Other: Docker, Git, CMake, Weights & Biases
+
+EXPERIENCE
+
+Computer Vision Engineer | Autonomous Vehicle Company | 2022 - Present
+- Developed multi-camera 3D object detection pipeline using BEVFusion architecture, achieving 72.3 mAP on nuScenes benchmark
+- Optimized YOLOv8 model for edge deployment on NVIDIA Jetson Orin, achieving 60 FPS with INT8 quantization
+- Built lane detection and road segmentation system using SegFormer, deployed in 500+ test vehicles
+- Implemented sensor fusion pipeline combining LiDAR, radar, and camera data for robust perception
+
+Computer Vision Engineer | Robotics Company | 2021 - 2022
+- Created 6-DOF pose estimation system for robotic grasping using PVNet, achieving 95% success rate
+- Built real-time defect detection system for manufacturing using anomaly detection (PatchCore), reducing false positives by 60%
+- Developed synthetic data generation pipeline using Blender and domain randomization
+
+EDUCATION
+M.S. Electrical Engineering (Computer Vision) | Technical University | 2021
+B.S. Electrical Engineering | Technical University | 2019
+
+CERTIFICATIONS
+- NVIDIA Deep Learning Institute - Computer Vision
+- AWS Certified Developer Associate
+
+PROJECTS
+- Real-time hand gesture recognition system (GitHub: 800+ stars)
+- Medical image segmentation for tumor detection (published research paper)
+- Participated in CVPR 2023 workshop on autonomous driving

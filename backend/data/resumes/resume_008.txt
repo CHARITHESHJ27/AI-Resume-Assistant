@@ -1,0 +1,51 @@
+RESUME_008 - Entry-Level ML Engineer
+
+SUMMARY
+Recent graduate and aspiring ML Engineer with strong foundations in machine learning, deep learning, and software engineering. Completed multiple internships and personal projects demonstrating practical ML skills.
+
+SKILLS
+Languages: Python, Java, SQL, JavaScript
+ML/DL: PyTorch, TensorFlow, Scikit-learn, Keras, HuggingFace (basic)
+Data: Pandas, NumPy, Matplotlib, Seaborn
+Tools: Git, Docker (basic), Jupyter, Google Colab, VS Code
+Cloud: AWS (basic - S3, EC2), GCP (Colab Pro, Vertex AI basics)
+Other: FastAPI (basic), React (basic), Linux
+
+EXPERIENCE
+
+ML Engineering Intern | Tech Company | Summer 2023
+- Developed data preprocessing pipeline for training dataset of 500K images, reducing preprocessing time by 60%
+- Implemented and evaluated 5 classification models for product categorization, achieving 93% accuracy
+- Wrote unit tests and documentation for ML utilities library
+- Presented findings to team of 15 engineers and product managers
+
+Research Assistant | University ML Lab | 2022 - 2023
+- Assisted PhD students with experiments on graph neural networks for molecular property prediction
+- Reproduced results from 3 published papers and identified discrepancies in reported metrics
+- Maintained experiment tracking using Weights & Biases
+
+Software Engineering Intern | Startup | Summer 2022
+- Built REST API endpoints using FastAPI for data ingestion service
+- Implemented basic recommendation algorithm for content feed
+
+EDUCATION
+B.S. Computer Science (Machine Learning Track) | State University | 2024
+GPA: 3.8/4.0 | Dean's List all semesters
+
+Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, NLP, Algorithms, Statistics, Linear Algebra
+
+CERTIFICATIONS
+- Deep Learning Specialization (Coursera - deeplearning.ai) - All 5 courses
+- Machine Learning Specialization (Coursera - Andrew Ng)
+- Kaggle ML Micro-Courses (5 certificates)
+- AWS Cloud Practitioner
+
+PROJECTS
+- Sentiment Analysis API: Fine-tuned DistilBERT for product reviews, deployed as FastAPI service (GitHub: 120 stars)
+- Image Captioning: Implemented attention-based encoder-decoder model achieving BLEU-4 of 28.3 on COCO
+- Stock Price Prediction: LSTM model with technical indicators, backtested on 5 years of data
+- Kaggle: Top 15% in Titanic, House Prices, and NLP competitions
+
+ACTIVITIES
+- ML Club President at university (organized workshops for 200+ students)
+- Hackathon: 1st place in university AI hackathon (built accessibility tool using computer vision)

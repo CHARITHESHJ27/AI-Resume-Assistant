@@ -1,0 +1,44 @@
+RESUME_005 - Data Scientist
+
+SUMMARY
+Data Scientist with 4 years of experience in statistical modeling, experimentation, and business analytics. Strong background in applying ML to drive product decisions at scale.
+
+SKILLS
+Languages: Python, R, SQL, Scala
+ML Libraries: Scikit-learn, XGBoost, LightGBM, CatBoost, Statsmodels, Prophet
+Deep Learning: PyTorch, Keras (basic)
+Data Tools: Pandas, NumPy, Spark, dbt, Airflow
+Visualization: Matplotlib, Seaborn, Plotly, Tableau, Looker
+Statistics: A/B Testing, Bayesian Inference, Causal Inference, Time Series
+Cloud: AWS (Redshift, S3, SageMaker), Databricks, Snowflake
+
+EXPERIENCE
+
+Senior Data Scientist | Consumer Tech Company | 2022 - Present
+- Led experimentation platform redesign enabling 50+ concurrent A/B tests, improving statistical rigor and reducing experiment duration by 30%
+- Built churn prediction model using gradient boosting achieving AUC 0.91, enabling proactive retention campaigns saving $2M annually
+- Developed causal inference framework using difference-in-differences for measuring marketing campaign effectiveness
+- Created automated reporting dashboards in Looker serving C-suite stakeholders
+
+Data Scientist | Retail Analytics Company | 2021 - 2022
+- Built demand forecasting models using Prophet and LSTM for 10K+ SKUs, reducing inventory costs by 18%
+- Developed customer segmentation using K-means and hierarchical clustering for targeted marketing
+- Implemented price elasticity models to optimize dynamic pricing strategy
+
+Junior Data Scientist | Financial Services | 2020 - 2021
+- Built credit risk scoring model using logistic regression and random forests
+- Conducted statistical analysis for regulatory reporting and compliance
+
+EDUCATION
+M.S. Statistics | State University | 2020
+B.S. Mathematics | State University | 2018
+
+CERTIFICATIONS
+- Databricks Certified Associate Developer for Apache Spark
+- Google Data Analytics Professional Certificate
+- Coursera Machine Learning Specialization (Andrew Ng)
+
+PROJECTS
+- Kaggle Grandmaster (top 50 globally in tabular competitions)
+- Open-source time series forecasting library (800+ GitHub stars)
+- Technical blog on applied statistics and ML (20K monthly readers)

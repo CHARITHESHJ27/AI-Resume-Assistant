@@ -1,0 +1,40 @@
+RESUME_007 - Full Stack AI Engineer
+
+SUMMARY
+Full Stack AI Engineer with 4 years of experience building end-to-end AI-powered applications. Combines strong software engineering with ML expertise to ship production AI products.
+
+SKILLS
+Frontend: React, Next.js, TypeScript, Tailwind CSS, WebSockets
+Backend: Python (FastAPI, Django), Node.js, GraphQL, REST APIs
+AI/ML: LangChain, LangGraph, OpenAI API, HuggingFace, Scikit-learn
+Databases: PostgreSQL, MongoDB, Redis, Pinecone, Supabase
+DevOps: Docker, Kubernetes, GitHub Actions, Vercel, AWS
+Other: WebRTC, Stripe API, Auth0, Sentry
+
+EXPERIENCE
+
+Full Stack AI Engineer | AI SaaS Startup | 2022 - Present
+- Built AI writing assistant SaaS product from 0 to 10K paying users using Next.js + FastAPI + GPT-4
+- Implemented streaming LLM responses using Server-Sent Events, reducing perceived latency by 70%
+- Designed multi-tenant architecture with role-based access control and usage-based billing
+- Built RAG system for document Q&A feature using LangChain + Pinecone, handling 100K+ queries/day
+- Reduced infrastructure costs by 45% through caching, CDN optimization, and efficient prompt design
+
+Software Engineer → AI Engineer | Product Company | 2020 - 2022
+- Transitioned from traditional software engineering to AI engineering
+- Built internal AI tools for content moderation using fine-tuned classifiers
+- Developed recommendation system for content discovery increasing engagement by 31%
+- Led frontend migration from Create React App to Next.js 13 App Router
+
+EDUCATION
+B.S. Computer Science | University | 2020
+
+CERTIFICATIONS
+- AWS Certified Solutions Architect Associate
+- Meta Frontend Developer Professional Certificate
+- OpenAI API Developer Certification
+
+PROJECTS
+- Open-source AI chat UI component library (1.5K GitHub stars)
+- Built and sold micro-SaaS AI tool ($5K MRR at peak)
+- Technical YouTube channel on AI engineering (8K subscribers)

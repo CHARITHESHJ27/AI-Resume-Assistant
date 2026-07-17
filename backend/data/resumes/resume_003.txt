@@ -1,0 +1,45 @@
+RESUME_003 - NLP / LLM Engineer
+
+SUMMARY
+NLP Engineer with 6 years of experience specializing in large language models, conversational AI, and information extraction. Led teams building production LLM applications serving millions of users.
+
+SKILLS
+Languages: Python, JavaScript, SQL
+NLP/LLM: HuggingFace, LangChain, LlamaIndex, OpenAI API, Anthropic API
+Models: GPT-4, Claude, Llama 2/3, Mistral, Falcon, T5, BERT, RoBERTa
+Techniques: RAG, Fine-tuning (LoRA, QLoRA), RLHF, Prompt Engineering, Chain-of-Thought
+Infrastructure: vLLM, TGI, Ollama, LangSmith, Weights & Biases
+Cloud: AWS Bedrock, GCP Vertex AI, Azure OpenAI
+Databases: Pinecone, Weaviate, ChromaDB, PostgreSQL (pgvector)
+
+EXPERIENCE
+
+Lead NLP Engineer | AI Product Company | 2021 - Present
+- Architected and deployed RAG system for enterprise knowledge base serving 50K daily queries with 94% user satisfaction
+- Fine-tuned Llama 2 70B using QLoRA for domain-specific legal document analysis, outperforming GPT-3.5 by 18% on internal benchmarks
+- Built multi-agent LLM system using LangGraph for automated customer support, handling 70% of tickets without human intervention
+- Reduced LLM inference costs by 65% through prompt optimization, caching, and model distillation
+
+NLP Engineer | Healthcare Tech Company | 2019 - 2021
+- Developed clinical NLP pipeline for extracting structured data from medical notes using spaCy and custom NER models
+- Built medical question-answering system using BioBERT fine-tuning, achieving 89% accuracy on MedQA benchmark
+- Implemented PII detection and anonymization pipeline for HIPAA compliance
+
+Junior NLP Engineer | Research Lab | 2018 - 2019
+- Contributed to open-source NLP library (2K+ GitHub stars)
+- Published 2 papers on dialogue systems at ACL and EMNLP
+
+EDUCATION
+Ph.D. Computational Linguistics (incomplete - left for industry) | Research University | 2018-2019
+M.S. Computer Science (NLP) | Research University | 2018
+B.S. Linguistics + Computer Science | Liberal Arts University | 2016
+
+CERTIFICATIONS
+- DeepLearning.AI LangChain for LLM Application Development
+- Hugging Face NLP Course Certificate
+- AWS Certified Machine Learning Specialty
+
+PROJECTS
+- Open-source RAG evaluation toolkit (1.2K GitHub stars)
+- LLM benchmark leaderboard contributor
+- Technical blog with 15K monthly readers on LLM engineering
