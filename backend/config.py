@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
     # --- Provider selection ---
-    llm_provider: Literal["ollama", "openai", "gemini"] = "ollama"
+    llm_provider: Literal["ollama", "openai", "gemini", "grok"] = "ollama"
 
     # --- Ollama (default, free, local) ---
     ollama_base_url: str = "http://localhost:11434"
@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     # --- Gemini (optional) ---
     gemini_api_key: str = ""
     gemini_model: str = "gemini-1.5-flash"
+
+    # --- Grok / xAI (optional) ---
+    grok_api_key: str = ""
+    grok_model: str = "grok-3-mini"
 
     # --- Embeddings (always local/free via HuggingFace) ---
     embedding_model: str = "all-MiniLM-L6-v2"

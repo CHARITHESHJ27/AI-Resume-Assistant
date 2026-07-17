@@ -81,6 +81,17 @@ def get_llm(temperature: float = 0.3) -> _RetryingLLM:
             google_api_key=settings.gemini_api_key,
         )
 
+    elif provider == "grok":
+        from langchain_openai import ChatOpenAI
+        if not settings.grok_api_key:
+            raise ValueError("LLM_PROVIDER=grok but GROK_API_KEY is not set in .env")
+        llm = ChatOpenAI(
+            model=settings.grok_model,
+            temperature=temperature,
+            api_key=settings.grok_api_key,
+            base_url="https://api.x.ai/v1",
+        )
+
     else:
         from langchain_ollama import ChatOllama
         llm = ChatOllama(
