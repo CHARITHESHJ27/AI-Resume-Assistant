@@ -20,7 +20,7 @@ from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.messages import AIMessage
 
 from agents.state import AgentState
