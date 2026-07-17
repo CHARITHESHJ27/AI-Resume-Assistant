@@ -88,6 +88,25 @@ Without trimming, token cost grows linearly with conversation length. Capping at
 
 ## Challenges & Solutions
 
+**Challenge: Version-pinned `requirements.txt` breaks Render deployment**  
+Render (and similar PaaS platforms) manage their own Python environment and pre-install certain packages at platform-specific versions. When `requirements.txt` pins exact versions (e.g., `numpy==1.26.4`, `pydantic==2.7.1`), it conflicts with Render's environment and causes dependency resolution failures at build time. The fix is to use base (unpinned) requirements — list only the package name without a version specifier, or use a loose minimum (`>=`) only where truly necessary. This lets Render resolve compatible versions itself and avoids conflicts entirely.
+
+```
+# ❌ Breaks on Render — too rigid
+numpy==1.26.4
+pydantic==2.7.1
+fastapi==0.111.0
+
+# ✅ Works on Render — platform resolves compatible versions
+numpy
+pydantic
+fastapi
+```
+
+The tradeoff is reproducibility: unpinned requirements can behave differently across environments. The right long-term solution is to pin versions only in a `requirements.lock` (or use `pip freeze > requirements.lock`) for local/CI use, while keeping `requirements.txt` unpinned for platform deployments.
+
+---
+
 **Challenge: BM25 index out of sync with ChromaDB**  
 The BM25 index is built from ChromaDB's stored documents at load time. If ChromaDB is rebuilt (e.g., after deleting `vector_store/`), the BM25 index rebuilds automatically in `_load_vector_store()`. The singleton pattern ensures this only happens once per process.
 
