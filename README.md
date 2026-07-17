@@ -7,6 +7,25 @@ A production-grade full-stack AI application featuring a **4-agent LangGraph sys
 
 ---
 
+## ⚠️ Disclaimer — LLM Provider & Live Demo
+
+This project supports **4 LLM providers** that are swappable via a single `LLM_PROVIDER` env variable:
+
+| Provider | Requires | Notes |
+|----------|----------|-------|
+| `ollama` | [Ollama](https://ollama.com) running locally | **Free, no API key needed** — default for local dev |
+| `openai` | `OPENAI_API_KEY` | GPT-4o-mini, paid |
+| `gemini` | `GEMINI_API_KEY` | Gemini 1.5 Flash, free tier available |
+| `grok` | `GROK_API_KEY` | xAI Grok, paid |
+
+**For local development**, I personally run this with **Ollama** (`llama3.2`) — it's completely free and runs on your machine with no API key required. Just [install Ollama](https://ollama.com/download), pull the model (`ollama pull llama3.2`), and set `LLM_PROVIDER=ollama` in your `.env`.
+
+**The live demo** is hosted on Railway with **Grok** (`grok-3-mini`) as the LLM provider since Ollama can't run on cloud servers. If you fork this project and deploy it yourself, swap in whichever provider you have an API key for — all four work identically.
+
+> **Fallback behavior:** If the configured provider's API key is missing or invalid, the backend automatically falls back to Ollama. So even if you set `LLM_PROVIDER=grok` but don't have a key, it won't crash — it'll just use Ollama locally.
+
+---
+
 ## Architecture
 
 ```
@@ -90,30 +109,43 @@ Query
 
 ## Local Setup
 
-### Backend
+### Quick Start (recommended)
+
+```bash
+# Install all dependencies
+make install
+
+# Run both backend + frontend
+make dev
+```
+
+Or run them separately:
+
+```bash
+make backend    # http://localhost:8000
+make frontend   # http://localhost:3000
+```
+
+### Manual Setup
+
+#### Backend
 
 ```bash
 cd backend
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 cp .env.example .env
-# Edit .env — set LLM_PROVIDER and the corresponding API key
-# Default: LLM_PROVIDER=ollama (free, local)
+# Set LLM_PROVIDER=ollama for local (free), or add an API key for openai/gemini/grok
 
 uvicorn main:app --reload --port 8000
 ```
 
-The vector store and BM25 index auto-initialize on first query (~30s first time, instant after).
-
-### Frontend
+#### Frontend
 
 ```bash
 cd frontend
 npm install
 cp .env.example .env.local
-# .env.local already points to http://localhost:8000
 
 npm run dev
 # Open http://localhost:3000
@@ -127,13 +159,15 @@ npm run dev
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LLM_PROVIDER` | `ollama` | `ollama` \| `openai` \| `gemini` |
+| `LLM_PROVIDER` | `ollama` | `ollama` \| `openai` \| `gemini` \| `grok` |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama server URL |
 | `OLLAMA_MODEL` | `llama3.2` | Ollama model name |
 | `OPENAI_API_KEY` | — | Required if `LLM_PROVIDER=openai` |
 | `OPENAI_MODEL` | `gpt-4o-mini` | OpenAI model name |
 | `GEMINI_API_KEY` | — | Required if `LLM_PROVIDER=gemini` |
 | `GEMINI_MODEL` | `gemini-1.5-flash` | Gemini model name |
+| `GROK_API_KEY` | — | Required if `LLM_PROVIDER=grok` |
+| `GROK_MODEL` | `grok-3-mini` | xAI Grok model name |
 | `CHROMA_PERSIST_DIR` | `./vector_store/chroma_db` | ChromaDB storage path |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins |
 

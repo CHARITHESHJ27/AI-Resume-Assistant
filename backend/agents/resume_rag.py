@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Hybrid RAG Pipeline
 ===================
@@ -18,8 +19,8 @@ from dataclasses import dataclass
 import numpy as np
 from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.messages import AIMessage
 

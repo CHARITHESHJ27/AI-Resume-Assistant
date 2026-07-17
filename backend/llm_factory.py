@@ -57,47 +57,58 @@ class _RetryingLLM:
         return getattr(self._llm, name)
 
 
+def _make_ollama(settings, temperature: float):
+    from langchain_ollama import ChatOllama
+    logger.info("Falling back to Ollama (%s)", settings.ollama_model)
+    return ChatOllama(
+        model=settings.ollama_model,
+        base_url=settings.ollama_base_url,
+        temperature=temperature,
+    )
+
+
 def get_llm(temperature: float = 0.3) -> _RetryingLLM:
     settings = get_settings()
     provider = settings.llm_provider
 
     if provider == "openai":
-        from langchain_openai import ChatOpenAI
         if not settings.openai_api_key:
-            raise ValueError("LLM_PROVIDER=openai but OPENAI_API_KEY is not set in .env")
-        llm = ChatOpenAI(
-            model=settings.openai_model,
-            temperature=temperature,
-            api_key=settings.openai_api_key,
-        )
+            logger.warning("OPENAI_API_KEY missing — falling back to Ollama")
+            llm = _make_ollama(settings, temperature)
+        else:
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(
+                model=settings.openai_model,
+                temperature=temperature,
+                api_key=settings.openai_api_key,
+            )
 
     elif provider == "gemini":
-        from langchain_google_genai import ChatGoogleGenerativeAI
         if not settings.gemini_api_key:
-            raise ValueError("LLM_PROVIDER=gemini but GEMINI_API_KEY is not set in .env")
-        llm = ChatGoogleGenerativeAI(
-            model=settings.gemini_model,
-            temperature=temperature,
-            google_api_key=settings.gemini_api_key,
-        )
+            logger.warning("GEMINI_API_KEY missing — falling back to Ollama")
+            llm = _make_ollama(settings, temperature)
+        else:
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            llm = ChatGoogleGenerativeAI(
+                model=settings.gemini_model,
+                temperature=temperature,
+                google_api_key=settings.gemini_api_key,
+            )
 
     elif provider == "grok":
-        from langchain_openai import ChatOpenAI
         if not settings.grok_api_key:
-            raise ValueError("LLM_PROVIDER=grok but GROK_API_KEY is not set in .env")
-        llm = ChatOpenAI(
-            model=settings.grok_model,
-            temperature=temperature,
-            api_key=settings.grok_api_key,
-            base_url="https://api.x.ai/v1",
-        )
+            logger.warning("GROK_API_KEY missing — falling back to Ollama")
+            llm = _make_ollama(settings, temperature)
+        else:
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(
+                model=settings.grok_model,
+                temperature=temperature,
+                api_key=settings.grok_api_key,
+                base_url="https://api.x.ai/v1",
+            )
 
     else:
-        from langchain_ollama import ChatOllama
-        llm = ChatOllama(
-            model=settings.ollama_model,
-            base_url=settings.ollama_base_url,
-            temperature=temperature,
-        )
+        llm = _make_ollama(settings, temperature)
 
     return _RetryingLLM(llm)
