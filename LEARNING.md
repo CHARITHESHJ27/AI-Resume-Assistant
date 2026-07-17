@@ -113,6 +113,24 @@ The chitchat node returns `additional_kwargs={"agent": "Assistant"}` but the fro
 
 ---
 
+## Future Improvements
+
+**Persistent conversation storage** — Conversations currently live in React state and are lost on page refresh. Adding a lightweight backend store (SQLite via SQLAlchemy, or browser `localStorage` on the frontend) would give users a true chat history across sessions.
+
+**Streaming for the Resume RAG Agent** — The RAG node currently runs the full 6-stage pipeline before the LLM starts generating. Streaming could begin after Stage 6 completes, but a better improvement would be to stream retrieval progress events (e.g., `{"type": "retrieval", "stage": "reranking"}`) so the UI can show meaningful progress instead of a blank typing indicator during the ~2–3s retrieval phase.
+
+**Resume corpus expansion and refresh** — The current 8 anonymized resumes are static. A real deployment would benefit from a periodic ingestion pipeline that adds new resumes, re-chunks changed documents, and rebuilds the BM25 index without downtime — using ChromaDB's `upsert` API and a background task queue (Celery or APScheduler).
+
+**Evaluation harness for RAG quality** — There's no automated way to measure whether retrieval is improving or regressing. Adding a small golden dataset of (query, expected_source) pairs and running `pytest` against it after any pipeline change would catch regressions before they reach production. Tools like RAGAS or a custom precision@k metric would work well here.
+
+**Authentication and multi-user support** — The current app is single-user with no auth. Adding JWT-based authentication (FastAPI + python-jose) would allow per-user conversation history, rate limiting by user rather than IP, and the ability to store uploaded resumes securely per user session.
+
+
+
+**Latency optimization for the cross-encoder** — The `ms-marco-MiniLM-L-6-v2` cross-encoder adds ~300–500ms per query on CPU. Options: (1) cache cross-encoder scores for repeated queries using Redis, (2) switch to a smaller cross-encoder (`ms-marco-TinyBERT-L-2-v2`), or (3) run inference on GPU in cloud deployments.
+
+---
+
 ## Resources
 
 - [LangGraph Official Docs](https://langchain-ai.github.io/langgraph/)

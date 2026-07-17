@@ -2,6 +2,9 @@
 
 A production-grade full-stack AI application featuring a **4-agent LangGraph system** for resume intelligence, AI/ML knowledge queries, and conversational interaction.
 
+**Live Demo:** https://ai-resume-assistant-lyart.vercel.app/  
+**GitHub:** https://github.com/CHARITHESHJ27/AI-Resume-Assistant
+
 ---
 
 ## Architecture
@@ -182,6 +185,11 @@ npm run dev
 ---
 
 ## Deployment
+
+### Links
+
+- **Live Demo:** https://ai-resume-assistant-lyart.vercel.app/
+- **GitHub Repository:** https://github.com/CHARITHESHJ27/AI-Resume-Assistant
 
 ### Frontend → Vercel
 
