@@ -27,43 +27,61 @@ function ConversationSidebar({
 }) {
   return (
     <motion.aside
-      initial={{ x: -280 }}
+      initial={{ x: -288 }}
       animate={{ x: 0 }}
-      exit={{ x: -280 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      exit={{ x: -288 }}
+      transition={{ type: "spring", stiffness: 320, damping: 32 }}
       className={cn(
-        "fixed left-0 top-0 h-full w-64 z-40 flex flex-col border-r shadow-xl",
-        isDark ? "bg-gray-900 border-gray-800" : "bg-white border-gray-200"
+        "fixed left-0 top-0 h-full w-72 z-40 flex flex-col border-r shadow-2xl",
+        isDark
+          ? "bg-gray-900 border-gray-800/60"
+          : "bg-white border-gray-200"
       )}
       aria-label="Conversation history"
       role="navigation"
     >
-      <div className={cn("flex items-center justify-between px-4 h-14 border-b flex-shrink-0", isDark ? "border-gray-800" : "border-gray-200")}>
-        <span className={cn("text-sm font-semibold", isDark ? "text-white" : "text-gray-900")}>Conversations</span>
+      {/* Sidebar header */}
+      <div className={cn(
+        "flex items-center justify-between px-4 h-14 border-b flex-shrink-0",
+        isDark ? "border-gray-800/60" : "border-gray-200"
+      )}>
+        <span className={cn("text-sm font-semibold tracking-tight", isDark ? "text-white" : "text-gray-900")}>
+          Conversations
+        </span>
         <button
           onClick={onClose}
           aria-label="Close sidebar"
-          className={cn("p-1.5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500", isDark ? "text-gray-400 hover:text-white hover:bg-gray-800" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100")}
+          className={cn(
+            "p-1.5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500/50",
+            isDark ? "text-gray-500 hover:text-white hover:bg-gray-800" : "text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+          )}
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      <button
-        onClick={onNew}
-        className={cn(
-          "mx-3 mt-3 flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500",
-          "bg-gradient-to-br from-violet-600 to-blue-600 text-white hover:opacity-90"
-        )}
-        aria-label="Start new conversation"
-      >
-        <Plus className="w-4 h-4" />
-        New Chat
-      </button>
+      {/* New chat button */}
+      <div className="px-3 pt-3 pb-1">
+        <button
+          onClick={onNew}
+          className={cn(
+            "w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150",
+            "focus:outline-none focus:ring-2 focus:ring-violet-500/50",
+            "bg-gradient-to-br from-violet-600 to-blue-600 text-white hover:opacity-90 shadow-md shadow-violet-500/20"
+          )}
+          aria-label="Start new conversation"
+        >
+          <Plus className="w-4 h-4" />
+          New Chat
+        </button>
+      </div>
 
-      <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1" role="list" aria-label="Previous conversations">
+      {/* Conversation list */}
+      <div className="flex-1 overflow-y-auto px-3 py-2 space-y-0.5" role="list" aria-label="Previous conversations">
         {conversations.length === 0 && (
-          <p className={cn("text-xs text-center mt-8", isDark ? "text-gray-600" : "text-gray-400")}>No conversations yet</p>
+          <p className={cn("text-xs text-center mt-10", isDark ? "text-gray-600" : "text-gray-400")}>
+            No conversations yet
+          </p>
         )}
         {conversations.map((c) => (
           <button
@@ -72,18 +90,23 @@ function ConversationSidebar({
             onClick={() => onSelect(c.id)}
             aria-current={c.id === activeId ? "page" : undefined}
             className={cn(
-              "w-full text-left px-3 py-2.5 rounded-xl text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500",
+              "w-full text-left px-3 py-2.5 rounded-xl text-xs transition-all duration-150",
+              "focus:outline-none focus:ring-2 focus:ring-violet-500/50",
               c.id === activeId
-                ? isDark ? "bg-violet-500/20 text-violet-300" : "bg-violet-50 text-violet-700"
-                : isDark ? "text-gray-400 hover:bg-gray-800 hover:text-gray-200" : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                ? isDark
+                  ? "bg-violet-500/15 text-violet-300 border border-violet-500/20"
+                  : "bg-violet-50 text-violet-700 border border-violet-200"
+                : isDark
+                  ? "text-gray-400 hover:bg-gray-800/80 hover:text-gray-200 border border-transparent"
+                  : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 border border-transparent"
             )}
           >
             <div className="flex items-center gap-2 mb-0.5">
-              <MessageSquare className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
+              <MessageSquare className="w-3 h-3 flex-shrink-0 opacity-60" aria-hidden="true" />
               <span className="font-medium truncate">{c.title}</span>
             </div>
-            <span className={cn("text-[10px] pl-5", isDark ? "text-gray-600" : "text-gray-400")}>
-              {formatTime(c.updatedAt)} · {c.messages.length} messages
+            <span className={cn("text-[10px] pl-5 font-medium", isDark ? "text-gray-600" : "text-gray-400")}>
+              {formatTime(c.updatedAt)} · {c.messages.length} msg
             </span>
           </button>
         ))}
@@ -116,7 +139,9 @@ export default function ChatContainer() {
       const existing = prev.find((c) => c.id === activeConvId);
       if (existing) {
         return prev.map((c) =>
-          c.id === activeConvId ? { ...c, messages: msgs, title: makeTitle(msgs), updatedAt: new Date() } : c
+          c.id === activeConvId
+            ? { ...c, messages: msgs, title: makeTitle(msgs), updatedAt: new Date() }
+            : c
         );
       }
       const newConv: Conversation = {
@@ -164,7 +189,9 @@ export default function ChatContainer() {
       },
       () => {
         setMessages((prev) => {
-          const final = prev.map((m) => m.id === placeholder.id ? { ...m, isStreaming: false } : m);
+          const final = prev.map((m) =>
+            m.id === placeholder.id ? { ...m, isStreaming: false } : m
+          );
           saveConversation(final);
           return final;
         });
@@ -220,7 +247,16 @@ export default function ChatContainer() {
   };
 
   return (
-    <div className={cn("flex flex-col h-screen relative overflow-hidden", isDark ? "bg-gray-950 text-gray-100" : "bg-white text-gray-900")}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className={cn(
+        "flex flex-col h-screen relative overflow-hidden",
+        isDark ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"
+      )}
+    >
+      {/* Sidebar overlay */}
       <AnimatePresence>
         {sidebarOpen && (
           <>
@@ -228,7 +264,8 @@ export default function ChatContainer() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm"
               onClick={() => setSidebarOpen(false)}
               aria-hidden="true"
             />
@@ -261,18 +298,26 @@ export default function ChatContainer() {
           onSampleQuery={(q) => { setInput(q); sendMessage(q); }}
         />
 
+        {/* Error banner */}
         <AnimatePresence>
           {error && (
             <motion.div
-              initial={{ opacity: 0, y: 4 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 4 }}
+              exit={{ opacity: 0, y: 6 }}
+              transition={{ duration: 0.2 }}
               className="max-w-4xl mx-auto w-full px-4 pb-2"
               role="alert"
               aria-live="assertive"
             >
-              <div className="text-xs text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2">
-                ⚠ {error}
+              <div className={cn(
+                "text-xs rounded-xl px-4 py-2.5 border flex items-center gap-2",
+                isDark
+                  ? "text-red-400 bg-red-400/8 border-red-400/20"
+                  : "text-red-600 bg-red-50 border-red-200"
+              )}>
+                <span aria-hidden="true">⚠</span>
+                {error}
               </div>
             </motion.div>
           )}
@@ -290,6 +335,6 @@ export default function ChatContainer() {
           onRemoveAttachment={(name) => setAttachments((prev) => prev.filter((a) => a.name !== name))}
         />
       </main>
-    </div>
+    </motion.div>
   );
 }

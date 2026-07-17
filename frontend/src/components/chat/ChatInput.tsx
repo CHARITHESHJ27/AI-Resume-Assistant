@@ -2,6 +2,7 @@
 
 import { useRef, KeyboardEvent } from "react";
 import { Send, Square, Paperclip, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { FileAttachment } from "@/types";
 
@@ -64,45 +65,66 @@ export default function ChatInput({
     e.target.value = "";
   };
 
+  const canSend = !isLoading && value.trim().length > 0;
+
   return (
     <div
-      className={cn("border-t px-4 py-3", isDark ? "bg-gray-950 border-gray-800" : "bg-white border-gray-200")}
+      className={cn(
+        "border-t px-4 py-3",
+        isDark ? "bg-gray-950 border-gray-800/60" : "bg-white border-gray-200/80"
+      )}
       role="region"
       aria-label="Message input"
     >
-      <div className="max-w-4xl mx-auto">
-        {attachments.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-2" aria-label="Attached files">
-            {attachments.map((a) => (
-              <div
-                key={a.name}
-                className={cn(
-                  "flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border",
-                  isDark ? "bg-gray-800 border-gray-700 text-gray-300" : "bg-gray-100 border-gray-200 text-gray-700"
-                )}
-              >
-                <Paperclip className="w-3 h-3" aria-hidden="true" />
-                <span className="max-w-[120px] truncate">{a.name}</span>
-                <button
-                  onClick={() => onRemoveAttachment(a.name)}
-                  aria-label={`Remove ${a.name}`}
-                  className="hover:text-red-400 transition-colors"
+      <div className="max-w-3xl mx-auto">
+        {/* Attachments */}
+        <AnimatePresence>
+          {attachments.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="flex flex-wrap gap-2 mb-2.5 overflow-hidden"
+              aria-label="Attached files"
+            >
+              {attachments.map((a) => (
+                <div
+                  key={a.name}
+                  className={cn(
+                    "flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-xl border font-medium",
+                    isDark
+                      ? "bg-gray-800/80 border-gray-700/60 text-gray-300"
+                      : "bg-gray-100 border-gray-200 text-gray-700"
+                  )}
                 >
-                  <X className="w-3 h-3" />
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+                  <Paperclip className="w-3 h-3 opacity-60" aria-hidden="true" />
+                  <span className="max-w-[120px] truncate">{a.name}</span>
+                  <button
+                    onClick={() => onRemoveAttachment(a.name)}
+                    aria-label={`Remove ${a.name}`}
+                    className={cn(
+                      "ml-0.5 rounded-full p-0.5 transition-colors",
+                      isDark ? "hover:text-red-400 hover:bg-red-400/10" : "hover:text-red-500 hover:bg-red-50"
+                    )}
+                  >
+                    <X className="w-2.5 h-2.5" />
+                  </button>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
+        {/* Input box */}
         <div
           className={cn(
-            "flex items-end gap-2 rounded-2xl border px-4 py-2 transition-colors",
+            "flex items-end gap-2 rounded-2xl border px-3 py-2 transition-all duration-200",
             isDark
-              ? "bg-gray-900 border-gray-700 focus-within:border-violet-500/50"
-              : "bg-gray-50 border-gray-200 focus-within:border-violet-400"
+              ? "bg-gray-900/80 border-gray-700/60 focus-within:border-violet-500/50 focus-within:shadow-[0_0_0_3px_rgba(139,92,246,0.08)]"
+              : "bg-gray-50 border-gray-200 focus-within:border-violet-400/70 focus-within:shadow-[0_0_0_3px_rgba(139,92,246,0.06)] focus-within:bg-white"
           )}
         >
+          {/* File attach */}
           <input
             ref={fileInputRef}
             type="file"
@@ -113,19 +135,23 @@ export default function ChatInput({
             aria-label="Attach files"
             tabIndex={-1}
           />
-          <button
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={() => fileInputRef.current?.click()}
             aria-label="Attach file"
             disabled={isLoading}
             className={cn(
-              "flex-shrink-0 p-1.5 rounded-lg transition-colors mb-0.5 focus:outline-none focus:ring-2 focus:ring-violet-500",
-              isDark ? "text-gray-500 hover:text-gray-300 hover:bg-gray-800" : "text-gray-400 hover:text-gray-600 hover:bg-gray-200",
-              "disabled:opacity-40 disabled:cursor-not-allowed"
+              "flex-shrink-0 p-1.5 rounded-xl transition-colors mb-0.5 focus:outline-none focus:ring-2 focus:ring-violet-500/50",
+              isDark
+                ? "text-gray-600 hover:text-gray-300 hover:bg-gray-800"
+                : "text-gray-400 hover:text-gray-600 hover:bg-gray-200",
+              "disabled:opacity-30 disabled:cursor-not-allowed"
             )}
           >
             <Paperclip className="w-4 h-4" />
-          </button>
+          </motion.button>
 
+          {/* Textarea */}
           <textarea
             ref={textareaRef}
             value={value}
@@ -137,32 +163,44 @@ export default function ChatInput({
             aria-label="Message input"
             aria-multiline="true"
             className={cn(
-              "flex-1 resize-none bg-transparent text-sm outline-none py-1.5 max-h-40",
-              "placeholder:text-gray-400 disabled:opacity-50 focus:outline-none",
-              isDark ? "text-gray-100" : "text-gray-900"
+              "flex-1 resize-none bg-transparent text-sm outline-none py-1.5 max-h-40 leading-relaxed",
+              "placeholder:font-normal disabled:opacity-40",
+              isDark
+                ? "text-gray-100 placeholder:text-gray-600"
+                : "text-gray-900 placeholder:text-gray-400"
             )}
           />
 
-          <button
+          {/* Send / Stop */}
+          <motion.button
+            whileTap={{ scale: 0.88 }}
             onClick={isLoading ? onStop : handleSend}
             disabled={!isLoading && !value.trim()}
             aria-label={isLoading ? "Stop generation" : "Send message"}
             className={cn(
-              "flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-all mb-0.5",
-              "focus:outline-none focus:ring-2 focus:ring-violet-500",
+              "flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-200 mb-0.5",
+              "focus:outline-none focus:ring-2 focus:ring-violet-500/50",
               isLoading
-                ? "bg-red-500 hover:bg-red-600 text-white"
-                : value.trim()
-                  ? "bg-gradient-to-br from-violet-600 to-blue-600 text-white hover:opacity-90 shadow-sm"
+                ? "bg-red-500 hover:bg-red-600 text-white shadow-sm shadow-red-500/30"
+                : canSend
+                  ? "bg-gradient-to-br from-violet-600 to-blue-600 text-white hover:opacity-90 shadow-md shadow-violet-500/25"
                   : isDark
-                    ? "bg-gray-800 text-gray-600 cursor-not-allowed"
+                    ? "bg-gray-800 text-gray-700 cursor-not-allowed"
                     : "bg-gray-200 text-gray-400 cursor-not-allowed"
             )}
           >
-            {isLoading ? <Square className="w-3.5 h-3.5 fill-current" /> : <Send className="w-3.5 h-3.5" />}
-          </button>
+            {isLoading
+              ? <Square className="w-3 h-3 fill-current" />
+              : <Send className="w-3.5 h-3.5" />
+            }
+          </motion.button>
         </div>
-        <p className={cn("text-[10px] text-center mt-2", isDark ? "text-gray-700" : "text-gray-400")}>
+
+        {/* Hint */}
+        <p className={cn(
+          "text-[10px] text-center mt-2 font-medium",
+          isDark ? "text-gray-700" : "text-gray-400"
+        )}>
           Enter to send · Shift+Enter for new line · Attach .txt, .md, .json files
         </p>
       </div>
